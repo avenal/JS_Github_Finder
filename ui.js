@@ -29,5 +29,26 @@ class UI {
         <div id="repos"></div>
         `;
     }
-    
+
+    showRepos(repos){
+        let output = '';
+        repos.forEach(function(repo) {
+            output +=`
+            <div class="card">
+                <div class="card-title center-text">
+                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                </div>
+                <div class="card-content">
+                    <span class="badge">Public Repos: ${repo.stargazers_count}</span>
+                    <span class="badge">Public Gists: ${repo.watchers_count}</span>
+                    <span class="badge">Followers: ${repo.forks_count}</span>   
+                </div> 
+            </div>`;
+        });
+        document.getElementById('repos').innerHTML = output;
+    }
+
+    clearProfile(){
+        this.profile.innerHTML='';
+    }
 }
